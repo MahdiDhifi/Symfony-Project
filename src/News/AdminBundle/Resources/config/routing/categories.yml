@@ -1,0 +1,17 @@
+categories:
+    path:     /all
+    defaults: { _controller: "NewsAdminBundle:Categories:list" }
+
+categories_new:
+    path:     /add
+    defaults: { _controller: "NewsAdminBundle:Categories:add" }
+
+categories_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "NewsAdminBundle:Categories:edit" }
+
+
+categories_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "NewsAdminBundle:Categories:delete" }
+    requirements: { _method: post|delete|Get }

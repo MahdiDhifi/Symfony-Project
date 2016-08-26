@@ -1,0 +1,84 @@
+<?php
+
+namespace News\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Articles
+ *
+ * @ORM\Table(name="articles", indexes={@ORM\Index(name="categorie", columns={"categorie"})})
+ * @ORM\Entity
+ */
+class Articles
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenue", type="text", nullable=true)
+     */
+    private $contenue;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="video", type="string", length=255, nullable=true)
+     */
+    private $video;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="good", type="integer", nullable=true)
+     */
+    private $good;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bad", type="integer", nullable=true)
+     */
+    private $bad;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \News\AdminBundle\Entity\Categories
+     *
+     * @ORM\ManyToOne(targetEntity="News\AdminBundle\Entity\Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categorie", referencedColumnName="id")
+     * })
+     */
+    private $categorie;
+
+
+}

@@ -1,0 +1,22 @@
+articles:
+    path:     /{id}/all
+    defaults: { _controller: "NewsAdminBundle:Articles:list" }
+feedback:
+    path:     /{id}/feedback
+    defaults: { _controller: "NewsAdminBundle:Articles:feedback" }
+articles_show:
+    path:     /{id}/details
+    defaults: { _controller: "NewsAdminBundle:Articles:detail" }
+
+articles_new:
+    path:     /add
+    defaults: { _controller: "NewsAdminBundle:Articles:add" }
+
+articles_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "NewsAdminBundle:Articles:edit" }
+
+articles_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "NewsAdminBundle:Articles:delete" }
+    requirements: { _method: post|delete|Get }

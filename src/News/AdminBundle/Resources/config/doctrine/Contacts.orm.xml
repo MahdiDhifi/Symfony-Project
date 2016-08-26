@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="News\AdminBundle\Entity\Contacts" table="contacts">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="first" type="string" column="first" length="255" nullable="true"/>
+    <field name="last" type="string" column="last" length="255" nullable="true"/>
+    <field name="mail" type="string" column="mail" length="255" nullable="true"/>
+    <field name="subject" type="string" column="subject" length="255" nullable="true"/>
+    <field name="contenue" type="text" column="contenue" nullable="true"/>
+    <field name="date" type="date" column="date" nullable="true"/>
+    <field name="lu" type="boolean" column="lu" nullable="false"/>
+  </entity>
+</doctrine-mapping>

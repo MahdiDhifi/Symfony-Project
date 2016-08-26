@@ -1,0 +1,107 @@
+{% extends "NewsAdminBundle::layout.html.twig" %}
+
+  {% block  script %} 
+      
+       <script type="text/javascript">
+        window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer",
+        {
+        title:{
+        text: ""
+        },
+                exportFileName: "Pie Chart",
+                exportEnabled: true,
+                animationEnabled: true,
+                legend:{
+                verticalAlign: "bottom",
+                        horizontalAlign: "center"
+                },
+                data: [
+                {
+                type: "pie",
+                        showInLegend: true,
+                        toolTipContent: "{legendText}: <strong>{y}%</strong>",
+                        indexLabel: "{label} {y}%",
+                        dataPoints: [
+                        {  y:{{good}}, legendText: "Pour", exploded: true, label: "Pour" },
+                        {  y:{{bad}}, legendText: "Contre", label: "Contre" },
+                     
+                        ]
+                }
+                ]
+        });
+                chart.render();
+                }
+                </script>
+                 <script type="text/javascript" src="{{ asset('bundles/canvasjs.min.js')}}"></script>
+        {% endblock  %} 
+         {% block  table %}             
+    <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                           FeedBack
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-pie-chart"></i> FeedBack   /  {{entity.titre}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+<div class="row">
+                   
+                 
+               
+              
+                
+         
+                  
+    <center><h2> <u> {{entity.titre}}</u> </h2></center>
+                      
+                      
+                                    <center>
+  {% if  entity.good != 0 or  entity.bad != 0 %}
+                                        <div id="chartContainer" style="height: 300px; width: 100%;"></div><br>
+  {% else %}
+      <br><br>
+      <b><font size="5" color="red">No vote </font></b>
+      <br><br><br>
+      {% endif %}
+                                        <a href="{{ path('articles_show',{ 'id': entity.id }) }}">
+                    <button  type="button" class="btn btn-lg btn-primary">Detail Article</button>
+                </a><br>
+                        </center>
+
+                        
+                  
+                </div>
+               
+                <!-- /.row -->
+
+
+                
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+      
+      
+        {% endblock  %}
+        
+          {% block categories %}
+       {% for category in categories %}
+                              <li>
+                                <a href="{{ path('articles',{ 'id': category.id }) }}" >{{ category.titre }}</a>
+                            </li>
+       {% endfor %}
+                            {% endblock %}

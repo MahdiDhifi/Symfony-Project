@@ -1,0 +1,74 @@
+<?php
+
+namespace News\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contacts
+ *
+ * @ORM\Table(name="contacts")
+ * @ORM\Entity
+ */
+class Contacts
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first", type="string", length=255, nullable=true)
+     */
+    private $first;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last", type="string", length=255, nullable=true)
+     */
+    private $last;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255, nullable=true)
+     */
+    private $mail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="subject", type="string", length=255, nullable=true)
+     */
+    private $subject;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenue", type="text", nullable=true)
+     */
+    private $contenue;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="lu", type="boolean", nullable=false)
+     */
+    private $lu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="News\AdminBundle\Entity\Articles" table="articles">
+    <indexes>
+      <index name="categorie" columns="categorie"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titre" type="string" column="titre" length="255" nullable="true"/>
+    <field name="contenue" type="text" column="contenue" nullable="true"/>
+    <field name="date" type="date" column="date" nullable="true"/>
+    <field name="image" type="string" column="image" length="255" nullable="true"/>
+    <field name="video" type="string" column="video" length="255" nullable="true"/>
+    <field name="good" type="integer" column="good" nullable="true"/>
+    <field name="bad" type="integer" column="bad" nullable="true"/>
+    <field name="image1" type="string" column="image1" length="255" nullable="true"/>
+    <field name="parg1" type="text" column="parg1" nullable="true"/>
+    <field name="image2" type="string" column="image2" length="255" nullable="true"/>
+    <field name="parg2" type="text" column="parg2" nullable="true"/>
+    <field name="image3" type="string" column="image3" length="255" nullable="true"/>
+    <field name="parg3" type="text" column="parg3" nullable="true"/>
+    <field name="image4" type="string" column="image4" length="255" nullable="true"/>
+    <field name="parg4" type="text" column="parg4" nullable="true"/>
+    <field name="image5" type="string" column="image5" length="255" nullable="true"/>
+    <field name="parg5" type="text" column="parg5" nullable="true"/>
+    <field name="titre1" type="string" column="titre1" length="255" nullable="true"/>
+    <field name="titre2" type="string" column="titre2" length="255" nullable="true"/>
+    <field name="titre3" type="string" column="titre3" length="255" nullable="true"/>
+    <field name="titre4" type="string" column="titre4" length="255" nullable="true"/>
+    <field name="titre5" type="string" column="titre5" length="255" nullable="true"/>
+    <field name="auteur" type="string" column="auteur" length="255" nullable="true"/>
+    <many-to-one field="categorie" target-entity="Categories">
+      <join-columns>
+        <join-column name="categorie" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

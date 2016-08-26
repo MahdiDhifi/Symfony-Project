@@ -1,0 +1,10 @@
+index:
+    path:     /index1
+    defaults: { _controller: "NewsFrontBundle:Articles:index" }
+
+
+
+
+    
+
+

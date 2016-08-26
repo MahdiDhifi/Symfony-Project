@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/config/routing/articles.yml</file>
+            <file>file:/C:/wamp/www/News/web/front/style.css</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Entity/Album.php</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Entity/Articles.php</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Controller/ArticlesController.php</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/views/Articles/contact.html.twig</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Form/CategoriesType.php</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Controller/ArticlesController.php</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Resources/views/Articles/detail.html.twig</file>
+            <file>file:/C:/wamp/www/News/app/config/parameters.yml</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/views/Articles/detail.html.twig</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Entity/Contacts.php</file>
+            <file>file:/C:/wamp/www/News/web/front/css/theme.css</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Resources/views/Articles/edit.html.twig</file>
+            <file>file:/C:/wamp/www/News/web/login/css/style.css</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Entity/Categories.php</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Resources/config/routing/articles.yml</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/views/Articles/list.html.twig</file>
+            <file>file:/C:/wamp/www/News/Entity/ArticlesType.php</file>
+            <file>file:/C:/wamp/www/News/Entity/Articles.php</file>
+            <file>file:/C:/wamp/www/News/web/admin/css/sb-admin-rtl.css</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/views/Articles/home.html.twig</file>
+            <file>file:/C:/wamp/www/News/src/News/FrontBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Form/GalleryType.php</file>
+            <file>file:/C:/wamp/www/News/web/admin/css/sb-admin.css</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Entity/Gallery.php</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Form/AlbumType.php</file>
+            <file>file:/C:/wamp/www/News/src/News/AdminBundle/Form/ArticlesType.php</file>
+        </group>
+    </open-files>
+</project-private>

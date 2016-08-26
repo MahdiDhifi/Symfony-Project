@@ -1,0 +1,63 @@
+<?php
+
+namespace News\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Gallery
+ *
+ * @ORM\Table(name="gallery", indexes={@ORM\Index(name="album", columns={"album"})})
+ * @ORM\Entity
+ */
+class Gallery
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \News\AdminBundle\Entity\Album
+     *
+     * @ORM\ManyToOne(targetEntity="News\AdminBundle\Entity\Album")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="album", referencedColumnName="id")
+     * })
+     */
+    private $album;
+
+
+}

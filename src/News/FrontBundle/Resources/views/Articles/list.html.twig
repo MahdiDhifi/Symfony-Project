@@ -1,0 +1,374 @@
+{% extends "NewsFrontBundle::layout.html.twig" %}
+{# *******************************************************
+                    Navigation bar
+ ******************************************************** #}
+  {% block navbar %}
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>	  
+          <a class="navbar-brand" href="index.html"><img width="133" height="53" src="{{ asset('front/img/logo.png')}}" alt="logo"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav custom_nav">
+            <li ><a href="{{ path('home') }}">Home</a></li>
+            {% for cat in categories %}
+             {% if cat.id == id %}
+            <li class="active" ><a href="{{ path('listarticles',{ 'id': cat.id }) }}">{{ cat.titre }}</a></li>            
+        {% else %}
+           <li><a href="{{ path('listarticles',{ 'id': cat.id }) }}">{{ cat.titre }}</a></li> 
+            {% endif %}
+              {% endfor %}
+            <li><a href="{{ path('contacteradmin') }}">Contact Us</a></li>
+          </ul>           
+        </div><!--/.nav-collapse -->
+       
+      </div>
+    </nav>
+        {% endblock  %}
+
+        {# *******************************************************
+                             Slider
+         ******************************************************** #}
+        
+        
+          {% block slider %}
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+				<!-- start featured slider -->
+				<div class="featured_slider">
+				   <!-- Set up your HTML -->
+				   <h2 class="featured_title">
+                                        <MARQUEE SCROLLDELAY="137" onMouseOver="stop()" onMouseOut="start()">
+                                          {% if latest %}
+                                           {% for i in 0..latest|length-1 %}
+                                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  <img width="73" height="43" src="{{ asset('front/img/logo.png')}}" alt="logo"> <a class=""  href="{{ path('detailarticle',{ 'id': latest[i].id }) }}"><font color="white">{{latest[i].titre}}</font></a>
+                                        {% endfor %}
+                                           {% endif %}
+                                         </MARQUEE>
+                                        </h2>
+				 
+				</div><!-- End featured slider -->
+        </div>
+      </div>  
+      {% endblock  %}
+      
+      {# *******************************************************
+                            Left
+         ******************************************************** #}
+           {% block left %}
+                <div class="col-lg-3 col-md-3 col-sm-4">
+          <div class="left_sidebar">
+            <!-- start single widget -->
+            <div class="single_widget">
+              <h2>Latest Video</h2>
+              <ul class="post_nav">
+{% if latest  %}   
+                                      {% for i in 0..latest|length-1%}
+                                          {% if latest[i].video != null  %}
+					<div class="single_iteam">
+					   <li>
+                  <figure class="effect-lily">
+                    <iframe width="270" height="150" src="{{ asset('https://www.youtube.com/embed/')}}{{ latest[i].video }}" frameborder="0" allowfullscreen></iframe>
+                    
+                      <figcaption>
+                      <a href="{{ path('detailarticle',{ 'id': latest[i].id })}}">{{latest[i].titre}}</a>
+                    </figcaption>     
+                  </figure>
+                </li>
+                                        </div>
+					{% endif  %}
+					{% endfor %}
+                                      
+                                        {% endif %}
+              
+              </ul>
+            </div><!-- End single widget -->
+            
+            
+              <div class="single_widget">
+              <h2>Best Articles</h2>
+              <ul class="ppost_nav wow fadeInDown">
+                  <MARQUEE SCROLLDELAY="137" direction="up" onMouseOver="stop()" onMouseOut="start()">
+                  {% if most %}   
+             {% for m in most%}
+     
+                <li>
+                  <div class="media">
+                    <a class="media-left" href="{{ path('detailarticle',{ 'id': m.id })}}">
+                      <img  width="50" height="50" src="{{ asset('articles/')}}{{m.image}}" alt="Photo not found ">
+                    
+                    </a>
+                    <div class="media-body">
+                      <a class="catg_title" href=" {{ path('detailarticle',{ 'id': m.id })}}">{{m.titre}}</a>                                
+                    </div>
+                  </div>
+                </li>    
+                {% endfor %}
+                 {% endif %}
+                </marquee>
+               
+                
+    
+
+              </ul>
+                  
+        
+            </div>
+            
+            
+            
+            <!-- start single widget -->
+            <div class="single_widget">
+              <h2>Archive</h2>
+              <ul class="ppost_nav wow fadeInDown">
+                  <MARQUEE SCROLLDELAY="137" direction="up" onMouseOver="stop()" onMouseOut="start()">
+                  {% if archive %}   
+             {% for arc in archive%}
+     
+                <li>
+                  <div class="media">
+                    <a class="media-left" href="{{ path('detailarticle',{ 'id': arc.id })}}">
+                      <img  width="50" height="50" src="{{ asset('articles/')}}{{arc.image}}" alt="Photo not found ">
+                    
+                    </a>
+                    <div class="media-body">
+                      <a class="catg_title" href=" {{ path('detailarticle',{ 'id': arc.id })}}">{{arc.titre}}</a>                                
+                    </div>
+                  </div>
+                </li>    
+                {% endfor %}
+                 {% endif %}
+                </marquee>
+               
+                
+    
+
+              </ul>
+                       <br>
+        
+            </div><!-- End single widget -->
+          </div>
+        </div>
+           
+               {% endblock %}
+           
+      
+               
+               
+               
+               
+         {# *******************************************************
+                            right
+         ******************************************************** #}
+         
+         {% block right %}
+          <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="right_sidebar">
+            <!-- start single widget -->
+            <div class="single_widget">
+              <h2>Best Articles</h2>
+              <ul class="ppost_nav wow fadeInDown">
+                  <MARQUEE SCROLLDELAY="137" height="473" direction="up"  onMouseOver="stop()" onMouseOut="start()">
+                  {% if most %}   
+             {% for m in most%}
+     
+                <li>
+                  <div class="media">
+                    <a class="media-left" href="{{ path('detailarticle',{ 'id': m.id })}}">
+                      <img  width="50" height="50" src="{{ asset('articles/')}}{{m.image}}" alt="Photo not found ">
+                    
+                    </a>
+                    <div class="media-body">
+                      <a class="catg_title" href=" {{ path('detailarticle',{ 'id': m.id })}}">{{m.titre}}</a>                                
+                    </div>
+                  </div>
+                </li>    
+                {% endfor %}
+                 {% endif %}
+                </marquee>
+               
+                
+    
+
+              </ul>
+            </div><!-- End single widget -->
+           
+            <!-- start single widget -->
+            <div class="single_widget"> 
+             <h2>Categories</h2>
+             <ul>
+               
+              {% for cat in categories%}
+                 <li class="cat-item"><a href="{{ path('listarticles',{ 'id': cat.id }) }}">{{ cat.titre }}</a></li>      
+              {% endfor %}
+             </ul>          
+            </div><!-- End single widget -->
+             <!-- start single widget -->
+     
+             <!-- start single widget -->
+            <div class="single_widget"> 
+             <h2>Comments</h2>
+               <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4&appId=847336061967969";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div  width="273" class="fb-comments" data-href="https://www.facebook.com/groovyvisions" data-numposts="7"></div>         
+            </div><!-- End single widget -->
+          </div>
+        </div>
+         
+              {% endblock %}
+         
+          {# *******************************************************
+                            content
+         ******************************************************** #}
+           {% block content %}
+                    
+            <div class="col-lg-6 col-md-6 col-sm-8">
+          <div class="middle_content">
+            <h2>Articles</h2>
+
+            <!-- start featured post -->
+            <ul class="featured_nav">
+                {% for entity in entities %}
+              <li class="wow fadeInDown">
+                <figure class="featured_img">
+                    <a href="{{ path('detailarticle',{ 'id': entity.id }) }}"><img width="550" height="400" src="{{ asset('articles/')}}{{entity.image}} " alt="img"></a>
+                </figure>
+                <article class="featured_article">
+                  
+                  <h2 class="article_titile"><a href="{{ path('detailarticle',{ 'id': entity.id }) }}">{{entity.titre}}</a></h2>
+                  <p>{{entity.contenue [:100]}}...</p>
+                </article>
+              </li>
+               {% endfor %}
+            
+             
+            
+            </ul><!-- End featured post -->
+            <!-- start post pagination -->
+          <!--   <nav>
+              <ul class="pagination">
+                <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+              </ul>
+            </nav>-->
+            <!-- End post pagination -->
+            <center> <font color="blue" size="5">  <b> {{ knp_pagination_render(entities) }}<b></font></center>
+          </div>
+        </div>
+               
+               {% endblock %}
+           
+            {# *******************************************************
+                            footer
+         ******************************************************** #}
+            
+            
+            {% block footer %}
+                
+                
+                <footer id="footer">
+    <div class="footer_top">
+      <div class="container">
+        <div class="row">          
+          <div class="col-lg-3 col-md-3 col-sm3">
+            <div class="footer_widget wow fadeInLeftBig">
+              <h2>Categories</h2>
+              <ul class="labels_nav">
+                   {% for cat in categories %}
+            <li><a href="{{ path('listarticles',{ 'id': cat.id }) }}">{{ cat.titre }}</a></li>            
+        
+              {% endfor %}
+                
+             
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm3">
+            <div class="footer_widget">
+              <h2>Best Article</h2>
+              <ul class="ppost_nav wow fadeInLeftBig">
+               
+               {% if most %}   
+             {% for m in 0..4%}
+                <li>
+                  <div class="media">
+                    <a href="{{ path('detailarticle',{ 'id': most[m].id })}}" class="media-left">
+                      <img  width="35" height="35" src="{{ asset('articles/')}}{{most[m].image}}" alt="Photo not found ">
+                    </a>
+                    <div class="media-body">
+                    <a class="catg_title" href=" {{ path('detailarticle',{ 'id': most[m].id })}}">{{most[m].titre}}</a>
+                    </div>
+                  </div>
+                </li>   
+                 {% endfor %}
+                 {% endif %}
+ 
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm3">
+            <div class="footer_widget wow fadeInRightBig">
+              <h2>Contact Us</h2>
+                <ul class="labels_nav">
+                   
+            <li><a href="# " class="">eMail: groovyvisions@gmail.com</a></li>  
+            <li><a href="# " class="">Phone: (+216)50.373.828</a></li> 
+                                            <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4&appId=847336061967969";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<br><br>&nbsp; &nbsp; &nbsp;<div class="fb-like" width="250" data-href="https://www.facebook.com/groovyvisions" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+           
+        
+             
+                
+             
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm3">
+            <div class="footer_widget wow fadeInRightBig">
+              <h2>Follow US</h2>
+             <ul class="social_nav">
+                 <li><a href="{{ asset('https://www.facebook.com/groovyvisions')}}" target="top"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+             
+                    
+            </ul>
+       
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <div class="footer_bottom">
+      <div class="container">
+        <p class="copyright">All rights reserved <a href="index.html">2017</a></p>
+        <p class="developer">Developed By <a  style="color: white;" href="{{ asset('http://www.ntt-business.com')}}" rel="nofollow"><front color="#ffffff"><u>Next Target Technology</u></front></a></p>
+      </div>  
+    </div>
+  </footer>
+               {% endblock %}

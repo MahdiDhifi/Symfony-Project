@@ -1,0 +1,141 @@
+{% extends "NewsAdminBundle::layout.html.twig" %}
+
+
+         {% block  table %}             
+    <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                           Articles
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> All articles
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+<div class="row">
+                   
+           
+                 
+                    
+          {% if  entities |length > 0 %}
+                        <h2> {{entities[0].categorie.titre}}</h2>
+                        {% endif %}  
+    <p align="right"> 
+                <a href="{{ path('articles_new') }}">
+                     
+                    <button type="button" class="btn btn-lg btn-primary">Add article</button>
+                </a><br><br>
+    </p>      
+          
+                       
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                  <th>N°</th>
+                 <th>Date</th>
+                <th>Title</th>
+                <th>Categorie</th>     
+                <th>Content</th>
+                <th>Actions</th>
+                   </tr>
+                    </thead>
+                     <tbody>
+                         
+                                  {% set i = 0 %}
+
+                      {% for entity in entities %}
+                          {% if entity.categorie.id == cat %}
+                               {% set i = i+1 %}  
+            <tr>
+                <td>{{ i }}</td>
+                <td>{{ entity.date|date("Y-m-d") }}</td>
+                <td>{{ entity.titre }}</td>  
+                <td>{{ entity.categorie.titre }}</td> 
+                <td>{{ entity.contenue[:17] }}</td>
+
+                <td>
+                     <a href="{{ path('feedback',{ 'id': entity.id }) }}">
+                      <button title="Feedback" type="button" class="btn btn-default btn-circle"><i class="fa fa-pie-chart"></i>
+                      </button></a>
+                <a href="{{ path('articles_show',{ 'id': entity.id }) }}">
+                    
+                                                <button title="Details" type="button" class="btn btn-default btn-circle"><i class="fa fa-list-alt"></i>
+                                                </button>
+                                            </a>
+                                            <a href="{{ path('articles_edit',{ 'id': entity.id }) }}">
+                                                <button title="Edit" type="button" class="btn btn-primary btn-circle"><i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
+                                            <button title="Delete" type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="{{ '#myModal' ~ entity.id }}"><i class="fa fa-times"></i>
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="{{ 'myModal' ~ entity.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title" id="myModalLabel">Delete articles ?</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                              Are you sure you want to delete this article? 
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                            <a href="{{ path('articles_delete',{ 'id': entity.id }) }}" title="Delete"><input type="submit" value="Delete" class="btn btn-primary" onclick="this.disabled=true;this.value='Deleting, please wait...';this.form.submit();" /></a>              
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+
+                </td>
+            </tr>
+             {% endif %}
+        {% endfor %}
+                                    
+
+                                </tbody>
+                            </table>
+            <br>
+            <center> 
+            <div class="pagination">
+                 <b> {{ knp_pagination_render(entities) }}<b>
+    
+</div></center>
+                        </div>
+                   
+                </div>
+               
+                <!-- /.row -->
+
+
+                
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+      
+      
+        {% endblock  %}
+            
+              {% block categories %}
+       {% for category in categories %}
+                              <li>
+                                <a href="{{ path('articles',{ 'id': category.id }) }}" >{{ category.titre }}</a>
+                            </li>
+       {% endfor %}
+                            {% endblock %}

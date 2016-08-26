@@ -1,0 +1,31 @@
+news_front_articles:
+    resource: "@NewsFrontBundle/Resources/config/routing/articles.yml"
+    prefix:   /articles
+
+news_front_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: NewsFrontBundle:Default:index }
+
+home:
+    path:     /index
+    defaults: { _controller: "NewsFrontBundle:Articles:home" }
+
+contacteradmin:
+    path:     /contact
+    defaults: { _controller: "NewsFrontBundle:Articles:contact" }
+
+listarticles:
+    path:     /{id}/list_articles
+    defaults: { _controller: "NewsFrontBundle:Articles:list" }
+    
+detailarticle:
+    path:     /{id}/article
+    defaults: { _controller: "NewsFrontBundle:Articles:detail" }
+
+pour:
+    path:     /{id}/like
+    defaults: { _controller: "NewsFrontBundle:Articles:like" }
+
+contre:
+    path:     /{id}/dislike
+    defaults: { _controller: "NewsFrontBundle:Articles:dislike" }

@@ -1,0 +1,12 @@
+contacts:
+    path:     /mails
+    defaults: { _controller: "NewsAdminBundle:Contacts:list" }
+
+contacts_show:
+    path:     /{id}/read
+    defaults: { _controller: "NewsAdminBundle:Contacts:read" }
+
+contacts_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "NewsAdminBundle:Contacts:delete" }
+    requirements: { _method: post|delete|Get }

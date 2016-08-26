@@ -1,0 +1,19 @@
+news_admin_contacts:
+    resource: "@NewsAdminBundle/Resources/config/routing/contacts.yml"
+    prefix:   /contacts
+
+news_admin_categories:
+    resource: "@NewsAdminBundle/Resources/config/routing/categories.yml"
+    prefix:   /categories
+
+news_admin_articles:
+    resource: "@NewsAdminBundle/Resources/config/routing/articles.yml"
+    prefix:   /articles
+
+news_admin_homepage:
+    path:     /index
+    defaults: { _controller: NewsAdminBundle:Default:index }
+
+HomeAdmin:
+    path:     /admin
+    defaults: { _controller: NewsAdminBundle:Default:home}
